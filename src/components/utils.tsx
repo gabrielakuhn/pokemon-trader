@@ -54,7 +54,7 @@ const handlingBoards = async (
     let pushData = false;
 
     await inventory.forEach((element, i) => {
-      if (element.id === id) { // checking if element is already in the board, thus the click means "remove it from the board"
+      if (element.id === id) { // checking if element is already in the board, if so, the click means "remove it from the board"
         pushData = false;
         inventory.splice(i, 1); // removing element from the board array
       } else {
