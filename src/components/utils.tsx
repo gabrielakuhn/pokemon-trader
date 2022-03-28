@@ -12,7 +12,7 @@ export const handleCardclick = (
   base_experience: number
 ) => {
   const element = event.target as HTMLElement;
-  if(element.classList.length === 4){
+  if (element.classList.length === 4) {
     element.classList.add("bg-slate-600");
   } else {
     element.classList.remove("bg-slate-600");
@@ -61,26 +61,33 @@ const handlingExpPoints = async (
 };
 
 export const checkingExchange = () => {
-    let sumBoardOne = 0
-    let sumBoardTwo = 0
-    const tol = 30
+  let sumBoardOne = 0;
+  let sumBoardTwo = 0;
+  const tol = 30;
 
-    cardsBoardOne.forEach(element => {
-      sumBoardOne = sumBoardOne + element.exp
-    });
+  cardsBoardOne.forEach((element) => {
+    sumBoardOne = sumBoardOne + element.exp;
+  });
 
-    cardsBoardTwo.forEach(element => {
-      sumBoardTwo = sumBoardTwo + element.exp
-    });
+  cardsBoardTwo.forEach((element) => {
+    sumBoardTwo = sumBoardTwo + element.exp;
+  });
 
-    const rest = Math.abs(sumBoardOne - sumBoardTwo)
-    console.log(sumBoardOne, sumBoardTwo)
-    console.log(rest)
+  const rest = Math.abs(sumBoardOne - sumBoardTwo);
 
-    if (rest <= tol){
-      alert("Essa troca é justa.")
-    } else{
-      alert("Essa troca NÃO é justa.")
-    }
+  let msg;
 
-}
+  if (rest <= tol) {
+    msg = `
+      Essa troca é justa!\n
+      A diferença de baseExp é de ${rest}
+      A tolerância para a troca é de ${tol}`
+  } else {
+    msg = `
+      Essa troca NÃO é justa!\n
+      A diferença de baseExp é de ${rest}
+      A tolerância para a troca é de ${tol}`
+  }
+  alert(msg);
+
+};
